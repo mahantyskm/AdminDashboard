@@ -4,14 +4,17 @@ import java.security.MessageDigest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class HashUtil {
 
 	private static final Logger LOGGER = Logger.getLogger(HashUtil.class);
+	
 	@Autowired
-	static MessageDigest messageDigest;
+	MessageDigest messageDigest;
 
-	public static String getSHA256Hash(String password) {
+	public String getSHA256Hash(String password) {
 		messageDigest.update(password.getBytes());
 		byte[] byteData = messageDigest.digest();
 		StringBuffer sb = new StringBuffer();

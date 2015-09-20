@@ -17,12 +17,12 @@ public class Constants {
 	
 	//DB Constants
 	public static final String SCHEMA = "indusmed";
-	public static final String USERS_TABLE= "dashboard_users";
+	public static final String USERS_TABLE= "user_info";
 	//Dashboard_users columns
-	public static final String DASHBOARD_USER_DATE_OF_BIRTH = "dob";
-	public static final String DASHBOARD_USER_FIRST_NAME ="first_name";
-	public static final String DASHBOARD_USER_LAST_NAME ="last_name";
-	public static final String DASHBOARD_USER_MIDDLE_NAME ="middle_name";
+	public static final String DASHBOARD_USER_DATE_OF_BIRTH = "creation_date";
+	public static final String DASHBOARD_USER_FIRST_NAME ="firstname";
+	public static final String DASHBOARD_USER_LAST_NAME ="lastname";
+	public static final String DASHBOARD_USER_MIDDLE_NAME ="middlename";
 	public static final String DASHBOARD_USER_EMAIL = "email";
 	public static final String DASHBOARD_USER_IMAGE = "image";
 	public static final String DASHBOARD_USER_USERNAME = "username";

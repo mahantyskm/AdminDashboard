@@ -1,5 +1,8 @@
 package com.indusmed.boot;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -48,5 +51,16 @@ public class ApplicationBootLoader extends SpringBootServletInitializer {
 		UserManagementDaoImpl dao = new UserManagementDaoImpl();
 		dao.setDataSource(dataSource());		
 		return dao;
+	}
+	
+	@Bean 
+	public MessageDigest messageDigest(){
+	    try {
+            MessageDigest messageDigest = MessageDigest.getInstance("md5");
+            return messageDigest;
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("No such algo");
+           return null;
+        }	    
 	}
 }

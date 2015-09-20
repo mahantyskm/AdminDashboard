@@ -1,31 +1,39 @@
 package com.indusmed.dao;
 
-import java.util.List;
-
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import com.indusmed.base.AddNewUserRequest;
+import com.indusmed.base.Constants;
 import com.indusmed.base.DashboardUser;
 import com.indusmed.base.LoginRequest;
 import com.indusmed.base.UserRowMapper;
 
 public class UserManagementDaoImpl extends JdbcDaoSupport implements IUserManagementDao {
 
-	public int addNewUser(AddNewUserRequest request) {
-		String sql = "";
-		int result = getJdbcTemplate().update(sql, new Object[] {});
-		return result;
-	}
+    public int addNewUser(AddNewUserRequest request) {
+        String sql = "insert into " + Constants.USERS_TABLE + " (firstname,lastname,middlename,password,email,creation_date,image) values(?,?,?,?,?,?,?)";
+        int result = getJdbcTemplate().update(
+                sql,
+                new Object[] {
+                        request.getFirstname(),
+                        request.getLastname(),
+                        request.getMiddlename(),
+                        request.getPassword(),
+                        request.getEmail(),
+                        request.getDateOfJoining(),
+                        request.getImage() });
+        return result;
+    }
 
-	public DashboardUser getDashboardUser(LoginRequest request) {
-		String sql = "select * from dashboard_users where username ='" + request.getUserName() + "'";
-		List<DashboardUser> users = getJdbcTemplate().query(sql, new UserRowMapper());
+    public DashboardUser getDashboardUser(LoginRequest request) {
+        String sql = "select * from user_info where email = ?";
+        DashboardUser user = getJdbcTemplate().queryForObject(sql, new Object[] { request.getUsername() }, new UserRowMapper());
 
-		if (users != null && users.size() > 0) {
-			return users.get(0);
-		} else {
-			return null;
-		}
-	}
+        if (user != null) {
+            return user;
+        } else {
+            return null;
+        }
+    }
 
 }

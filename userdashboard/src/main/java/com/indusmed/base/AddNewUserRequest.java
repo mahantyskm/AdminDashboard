@@ -3,22 +3,22 @@ package com.indusmed.base;
 import java.util.Date;
 
 public class AddNewUserRequest extends AbstractServiceRequest {
-	private String userName;
+	private String username;
 	private String password;
-	private String firstName;
-	private String lastName;
-	private String middleName;
-	private String emailId;
+	private String firstname;
+	private String lastname;
+	private String middlename;
+	private String email;
 	private String image;
 	private String role;
-	private Date dateOfBirth;
+	private Date dateOfJoining;
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String userName) {
+		this.username = userName;
 	}
 
 	public String getPassword() {
@@ -29,36 +29,36 @@ public class AddNewUserRequest extends AbstractServiceRequest {
 		this.password = password;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstname(String firstName) {
+		this.firstname = firstName;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastname(String lastName) {
+		this.lastname = lastName;
 	}
 
-	public String getMiddleName() {
-		return middleName;
+	public String getMiddlename() {
+		return middlename;
 	}
 
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
+	public void setMiddlename(String middleName) {
+		this.middlename = middleName;
 	}
 
-	public String getEmailId() {
-		return emailId;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+	public void setEmail(String emailId) {
+		this.email = emailId;
 	}
 
 	public String getImage() {
@@ -77,11 +77,11 @@ public class AddNewUserRequest extends AbstractServiceRequest {
 		this.role = role;
 	}
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
+	public Date getDateOfJoining() {
+		return dateOfJoining;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setDateOfJoining(Date dateOfJoining) {
+		this.dateOfJoining = dateOfJoining;
 	}
 }
