@@ -1,4 +1,4 @@
-package com.indusmed.base;
+package com.indusmed.request;
 
 public class LoginRequest extends AbstractServiceRequest {
 	private String username;

@@ -6,15 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.indusmed.base.AddNewUserRequest;
-import com.indusmed.base.AddNewUserResponse;
 import com.indusmed.base.Constants;
 import com.indusmed.base.DashboardUser;
-import com.indusmed.base.GetUserResponse;
-import com.indusmed.base.LoginRequest;
-import com.indusmed.base.LoginResponse;
-import com.indusmed.base.LogoutResponse;
 import com.indusmed.dao.UserManagementDaoImpl;
+import com.indusmed.request.AddNewUserRequest;
+import com.indusmed.request.LoginRequest;
+import com.indusmed.response.AddNewUserResponse;
+import com.indusmed.response.GetUserResponse;
+import com.indusmed.response.LoginResponse;
+import com.indusmed.response.LogoutResponse;
 import com.indusmed.utils.HashUtil;
 
 @RestController

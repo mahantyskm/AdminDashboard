@@ -1,8 +1,8 @@
 package com.indusmed.dao;
 
-import com.indusmed.base.AddNewUserRequest;
 import com.indusmed.base.DashboardUser;
-import com.indusmed.base.LoginRequest;
+import com.indusmed.request.AddNewUserRequest;
+import com.indusmed.request.LoginRequest;
 
 public interface IUserManagementDao {
 	public int addNewUser(AddNewUserRequest request);

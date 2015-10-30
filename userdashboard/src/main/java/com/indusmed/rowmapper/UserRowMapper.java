@@ -1,18 +1,21 @@
-package com.indusmed.base;
+package com.indusmed.rowmapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
+import com.indusmed.base.Constants;
+import com.indusmed.base.DashboardUser;
+
 public class UserRowMapper implements RowMapper<DashboardUser>{
 
 	public DashboardUser mapRow(ResultSet rs, int rowNum) throws SQLException {
-	    System.out.println("ee: "+rowNum);
+
 		if(rs == null){
 			return null;
 		}
-		System.out.println("Value: "+rs.getString("lastname"));
+
 		DashboardUser user = new DashboardUser();
 		user.setDateOfBirth(rs.getDate(Constants.DASHBOARD_USER_DATE_OF_BIRTH));
 		user.setFirstname(rs.getString(Constants.DASHBOARD_USER_FIRST_NAME));

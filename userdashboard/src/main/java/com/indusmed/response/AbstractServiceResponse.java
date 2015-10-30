@@ -1,4 +1,4 @@
-package com.indusmed.base;
+package com.indusmed.response;
 
 public abstract class AbstractServiceResponse {
 	private boolean successful;

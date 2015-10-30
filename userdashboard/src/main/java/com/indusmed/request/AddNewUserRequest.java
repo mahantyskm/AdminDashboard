@@ -1,4 +1,4 @@
-package com.indusmed.base;
+package com.indusmed.request;
 
 import java.util.Date;
 

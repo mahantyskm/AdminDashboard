@@ -2,11 +2,11 @@ package com.indusmed.dao;
 
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
-import com.indusmed.base.AddNewUserRequest;
 import com.indusmed.base.Constants;
 import com.indusmed.base.DashboardUser;
-import com.indusmed.base.LoginRequest;
-import com.indusmed.base.UserRowMapper;
+import com.indusmed.request.AddNewUserRequest;
+import com.indusmed.request.LoginRequest;
+import com.indusmed.rowmapper.UserRowMapper;
 
 public class UserManagementDaoImpl extends JdbcDaoSupport implements IUserManagementDao {
 
@@ -27,13 +27,15 @@ public class UserManagementDaoImpl extends JdbcDaoSupport implements IUserManage
 
     public DashboardUser getDashboardUser(LoginRequest request) {
         String sql = "select * from user_info where email = ?";
-        DashboardUser user = getJdbcTemplate().queryForObject(sql, new Object[] { request.getUsername() }, new UserRowMapper());
-
-        if (user != null) {
-            return user;
-        } else {
-            return null;
+        
+        DashboardUser user = null;
+        try{
+            user = getJdbcTemplate().queryForObject(sql, new Object[] { request.getUsername() }, new UserRowMapper());
         }
+        catch(Exception e){
+            System.out.println("Ecxeption while querying for username");
+        }
+        return user;
     }
 
 }

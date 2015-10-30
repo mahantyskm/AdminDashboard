@@ -16,6 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import com.indusmed.dao.DashboardServiceDaoImpl;
 import com.indusmed.dao.UserManagementDaoImpl;
 
 @ComponentScan("com.indusmed")
@@ -52,6 +53,12 @@ public class ApplicationBootLoader extends SpringBootServletInitializer {
 		dao.setDataSource(dataSource());		
 		return dao;
 	}
+	@Bean
+    public DashboardServiceDaoImpl dashboardServiceDao(){
+	    DashboardServiceDaoImpl dao = new DashboardServiceDaoImpl();
+        dao.setDataSource(dataSource());        
+        return dao;
+    }
 	
 	@Bean 
 	public MessageDigest messageDigest(){

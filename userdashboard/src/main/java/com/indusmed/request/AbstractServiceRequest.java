@@ -1,4 +1,4 @@
-package com.indusmed.base;
+package com.indusmed.request;
 
 public abstract class AbstractServiceRequest {
 	private String requestProtocol;
