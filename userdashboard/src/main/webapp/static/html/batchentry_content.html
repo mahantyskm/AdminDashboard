@@ -1,0 +1,272 @@
+<div class="content-wrapper">
+
+	<!-- Main content -->
+	<section class="content">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<h3 class="box-title">Add Batch</h3>
+					</div>
+					<!-- form start -->
+					<form role="form" id="addnewbatchform" class="form-horizontal"
+						method="post">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Batch
+									Number</label>
+								<div class="col-sm-10">
+									<input class="form-control" name="batchNumber"
+										placeholder="Enter batch number" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Insurance
+									Name</label>
+								<div class="col-sm-10">
+									<input class="form-control" name="insuranceName"
+										placeholder="Insuarance name / licence" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Insurance
+									Package</label>
+								<div class="col-sm-10">
+									<input class="form-control" name="insurancePackage"
+										placeholder="Enter insurance package type" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Facility
+									Name</label>
+								<div class="col-sm-10">
+									<input class="form-control" name="facilityName"
+										placeholder="Enter Facility Name" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Encounter
+									Type </label>
+								<div class="col-sm-10">
+									<input class="form-control" name="batchEncounterType"
+										placeholder="Enter Encounter Type" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Received
+									by User </label>
+								<div class="col-sm-10">
+									<input class="form-control" name="receivedByUser"
+										placeholder="Enter if recieved by userr" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Date
+									Received </label>
+								<div class="col-sm-10">
+									<input id="dateRecieve" name="dateRecieved"
+										class="form-control date" type="text">
+									<script>
+										$(function() {
+											$("#dateRecieve").datepicker();
+										});
+									</script>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Date
+									From </label>
+								<div class="col-sm-10">
+									<input id="dateFrom" name="dateFrom" class="form-control date"
+										type="text">
+									<script>
+										$(function() {
+											$("#dateFrom").datepicker();
+										});
+									</script>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Date
+									To </label>
+								<div class="col-sm-10">
+									<input id="dateTo" name="dateTo" class="form-control date"
+										type="text">
+									<script>
+										$(function() {
+											$("#dateTo").datepicker();
+										});
+									</script>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Claim
+									count </label>
+								<div class="col-sm-10">
+									<input class="form-control" name="claimCount"
+										placeholder="Enter claim count" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Actual
+									Claim count </label>
+								<div class="col-sm-10">
+									<input class="form-control" name="actualClaimCount"
+										placeholder="Enter actual claim count" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Claim
+									Total Amount </label>
+								<div class="col-sm-10">
+									<input class="form-control" name="claimTotalAmount"
+										placeholder="Enter claim total amount" type="text">
+								</div>
+							</div>
+						</div>
+						<!-- /.box-body -->
+
+						<div class="box-footer">
+							<input type="button" class="btn btn-primary"
+								onclick="javascript:addNewBatch()" value="Submit" />
+						</div>
+						<script>
+							$(document)
+									.ready(
+											function() {
+												$.validator.addMethod('checkdateto',
+														function(value, el, param) {
+													
+															var dtfrom = $("#dateFrom")
+																	.val();
+															var dtto = $("#dateTo")
+															.val();
+															
+															var dateFrom = $.datepicker.parseDate('mm/dd/yy', dtfrom);
+															var dateTo = $.datepicker.parseDate('mm/dd/yy', dtto);
+															
+															if (dateFrom < dateTo){
+																return true;
+															}else {
+																return false;
+															}
+														}, "Please enter valid percentage.");
+												
+												$("#addnewbatchform")
+														.validate(
+																{
+																	rules : {
+																		batchNumber : {
+																			required : true,
+																			number : true
+																		},
+																		insuranceName : {
+																			required : true
+																		},
+																		insurancePackage : {
+																			required : true
+																		},
+																		facilityName:{
+																			required:true
+																		},
+																		batchEncounterType : {
+																			required : true
+																		},
+																		receivedByUser : {
+																			required : true
+																		},
+																		dateRecieved : {
+																			required : true
+																		},
+																		dateFrom : {
+																			required : true
+																		},
+																		dateTo : {
+																			required : true,
+																			checkdateto: true
+																		},
+																		claimCount : {
+																			required : true,
+																			number : true
+																		},
+																		actualClaimCount : {
+																			required : true,
+																			number : true
+																		},
+																		claimTotalAmount : {
+																			required : true,
+																			number : true
+																		}
+																	},
+																	messages : {
+																		batchNumber : {
+																			required : "Please enter Batch Number.",
+																			number : "Batch number can only be numeric."
+																		},
+																		insuranceName : {
+																			required : "Please enter Insurance Name."
+																		},
+																		insurancePackage : {
+																			required : "Please enter Package Type."
+																		},
+																		facilityName:{
+																			required:"Please enter facility name."
+																		},
+																		batchEncounterType : {
+																			required : "Please enter Encounter Type."
+																		},
+																		receivedByUser : {
+																			required : "Please enter if recieved by user."
+																		},
+																		dateRecieved : {
+																			required : "Please select date recieved."
+																		},
+																		dateFrom : {
+																			required : "Please select date from."
+																		},
+																		dateTo : {
+																			required : "Please select date to.",
+																			checkdateto: "Date To should be greater than Date From."
+																		},
+																		claimCount : {
+																			required : "Please enter claim count.",
+																			number : "Please enter a numeric value."
+																		},
+																		actualClaimCount : {
+																			required : "Please enter actual claim count.",
+																			number : "Please enter a numeric value."
+																		},
+																		claimTotalAmount : {
+																			required : "Please enter claim total amount.",
+																			number : "Please enter a numeric value."
+																		}
+																	}
+																});
+											});
+						</script>
+					</form>
+					<div class="modal" id="modalAlert">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-hidden="true">×</button>
+									<h4 class="modal-title">Add New User</h4>
+								</div>
+								<div class="modal-body">
+									<div id="messageBox"></div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

@@ -1,0 +1,411 @@
+<div class="content-wrapper">
+
+	<!-- Main content -->
+	<section class="content">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<h3 class="box-title">Data Entry</h3>
+					</div>
+					<!-- form start -->
+
+					<div class="box-body">
+						<div class="nav-tabs-custom">
+							<ul class="nav nav-tabs">
+								<li class="active"><a aria-expanded="true" href="#tab_1"
+									data-toggle="tab">Batch Information</a></li>
+								<li class=""><a aria-expanded="false" href="#tab_2"
+									data-toggle="tab">Claim Detail</a></li>
+								<li class=""><a aria-expanded="false" href="#tab_3"
+									data-toggle="tab">Notes</a></li>
+								<li class="pull-right"><a href="#" class="text-muted"><i
+										class="fa fa-gear"></i></a></li>
+							</ul>
+
+							<div class="tab-content">
+
+								<div class="tab-pane active" id="tab_1">
+									<form role="form" id="findBatchForm" class="form-horizontal"
+										method="post">
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Batch Number</label>
+											<div class="col-sm-10">
+												<input class="form-control" id="batchNumber"
+													name="batchNumber"
+													placeholder="Batch number will be displayed here"
+													type="text">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Batch Total Count</label>
+											<div class="col-sm-10">
+												<input class="form-control" disabled="disabled"
+													id="batchTotalCount" name="batchTotalCount"
+													placeholder="Batch Total Count will be displayed here"
+													type="text">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Actual Batch Count</label>
+											<div class="col-sm-10">
+												<input class="form-control" disabled="disabled"
+													id="actualBatchCount" name="actualBatchCount"
+													placeholder="Enter batch number" type="text">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Batch Total Amount</label>
+											<div class="col-sm-10">
+												<input class="form-control" disabled="disabled"
+													id="batchTotalAmount" name="batchTotalAmount"
+													placeholder="Batch total amount will be displayed here"
+													type="text">
+											</div>
+										</div>
+										<div class="box-footer">
+											<input type="button" class="btn btn-primary"
+												onclick="javascript:findBatch()" value="Search" />
+										</div>
+										<script>
+											$(document)
+													.ready(
+															function() {
+																$(
+																		"#findBatchForm")
+																		.validate(
+																				{
+																					rules : {
+																						batchNumber : {
+																							required : true,
+																							number : true
+																						}
+																					},
+																					messages : {
+																						batchNumber : {
+																							required : "Please enter username.",
+																							number : "Please enter valid number."
+																						}
+																					}
+																				});
+															});
+										</script>
+									</form>
+								</div>
+
+								<!-- /.tab-pane -->
+								<div class="tab-pane" id="tab_2">
+									<form role="form" id="addNewClaimForm" class="form-horizontal"
+										method="post">
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Patient ID</label>
+											<div class="col-sm-10">
+												<input class="form-control col-sm-10" id="patientId"
+													name="patientId" placeholder="Enter patient ID" type="text">												
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Patient Name</label>
+											<div class="col-sm-10">
+												<input class="form-control" 
+													id="patientName" name="patientName"
+													placeholder="Enter patient name" type="text" onkeyup="javascript:searchPatientsByName()">
+													<div id="patientSuggestion" class="dropdown-menu"></div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Insurance Card
+												Number</label>
+											<div class="col-sm-10">
+												<input class="form-control" id="isuranceCardNumber"
+													name="insuranceCardNumber"
+													placeholder="Insurance card number will be displayed here"
+													type="text">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Medical Record
+												Number</label>
+											<div class="col-sm-10">
+												<input class="form-control" name="medicalRecordNumber"
+													placeholder="Enter medical record number" type="text">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Claim Invoice Number</label>
+											<div class="col-sm-10">
+												<input class="form-control" name="claimInvoiceNumber"
+													placeholder="Enter claim invoice number." type="text">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Claim Serial Number</label>
+											<div class="col-sm-10">
+												<input class="form-control" name="claimSerialNumber"
+													placeholder="Enter claim serial number" type="text">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Clinician Name</label>
+											<div class="col-sm-10">
+												<input class="form-control" name="clinicanName"
+													placeholder="Enter clinician name/Licence" type="text">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Transfer Destination</label>
+											<div class="col-sm-10">
+												<input class="form-control" name="transferDestination"
+													placeholder="Enter transfer destination" type="text">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Encounter Start Date</label>
+											<div class="col-sm-10">
+												<input class="form-control" id="encounterStartDate"
+													name="encounterStartDate"
+													placeholder="Enter encounter start date" type="text">
+												<script>
+													$(function() {
+														$("#encounterStartDate")
+																.datepicker();
+													});
+												</script>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Encounter End Date</label>
+											<div class="col-sm-10">
+												<input class="form-control" id="encounterEndDate"
+													name="encounterEndDate"
+													placeholder="Enter encounter end date" type="text">
+											</div>
+											<script>
+												$(function() {
+													$("#encounterEndDate")
+															.datepicker();
+												});
+											</script>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Invoice Amount</label>
+											<div class="col-sm-10">
+												<input class="form-control" name="invoiceAmount"
+													placeholder="Invoice amount" type="text">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Discount Amount</label>
+											<div class="col-sm-10">
+												<input class="form-control" name="discountAmount"
+													placeholder="Discount amount" type="text">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"
+												class="col-sm-2 controol-label">Cash Payment</label>
+											<div class="col-sm-10">
+												<input class="form-control" name="cashPayment"
+													placeholder="Enter amount paid in cash" type="text">
+											</div>
+										</div>
+
+										<div class="box-footer">
+											<input type="button" class="btn btn-primary"
+												onclick="javascript:addClaim()" value="Submit" />
+										</div>
+										<script>
+											$(document)
+													.ready(
+															function() {
+																$.validator
+																		.addMethod(
+																				'checkdateto',
+																				function(
+																						value,
+																						el,
+																						param) {
+
+																					var dtfrom = $(
+																							"#encounterStartDate")
+																							.val();
+																					var dtto = $(
+																							"#encounterEndDate")
+																							.val();
+
+																					var dateFrom = $.datepicker
+																							.parseDate(
+																									'mm/dd/yy',
+																									dtfrom);
+																					var dateTo = $.datepicker
+																							.parseDate(
+																									'mm/dd/yy',
+																									dtto);
+
+																					if (dateFrom < dateTo) {
+																						return true;
+																					} else {
+																						return false;
+																					}
+																				},
+																				"Please enter valid date.");
+
+																$(
+																		"#addNewClaimForm")
+																		.validate(
+																				{
+																					rules : {
+
+																						patientName : {
+																							required : true,
+																							number : false
+																						},
+																						isuranceCardNumber : {
+																							required : true
+																						},
+																						medicalRecordNumber : {
+																							required : true
+																						},
+																						claimInvoiceNumber : {
+																							required : true
+																						},
+																						claimSerialNumber : {
+																							required : true
+																						},
+																						clinicanName : {
+																							required : true,
+																							number : false
+																						},
+																						transferDestination : {
+																							required : true
+																						},
+																						encounterStartDate : {
+																							required : true
+																						},
+																						encounterEndDate : {
+																							required : true,
+																							checkdateto : true
+																						},
+																						invoiceAmount : {
+																							required : true,
+																							number : true
+																						},
+																						discountAmount : {
+																							required : true,
+																							number : true
+																						},
+																						cashPayment : {
+																							required : true,
+																							number : true
+																						}
+																					},
+																					messages : {
+																						patientName : {
+																							required : "Please enter Patient name.",
+																							number : "Patient name cannot be numeric."
+																						},
+																						isuranceCardNumber : {
+																							required : "Please enter Insurance Card Number."
+																						},
+																						medicalRecordNumber : {
+																							required : "Please enter Medical Record Number."
+																						},
+																						claimInvoiceNumber : {
+																							required : "Please enter Claim Invoice Number."
+																						},
+																						claimSerialNumber : {
+																							required : "Please enter Claim Serial Number."
+																						},
+																						clinicanName : {
+																							required : "Please enter Clinician Name.",
+																							number : "Patient name cannot be numeric."
+																						},
+																						transferDestination : {
+																							required : "Please enter Transfer Destination."
+																						},
+																						encounterStartDate : {
+																							required : "Please select Encounter Start Date."
+																						},
+																						encounterEndDate : {
+																							required : "Please seleect Encounter End Date.",
+																							checkdateto : "Encounter start date should be less than end date."
+																						},
+																						invoiceAmount : {
+																							required : "Please enter Invoice Amount.",
+																							number : "Discount amount should be numeric."
+																						},
+																						discountAmount : {
+																							required : "Please enter discount Amount.",
+																							number : "Discount amount should be numeric."
+																						},
+																						cashPayment : {
+																							required : "Please enter the amount paid in cash.",
+																							number : "Cash payment amount should be numeric."
+																						}
+																					}
+																				});
+															});
+										</script>
+									</form>
+								</div>
+								<!-- /.tab-pane -->
+								<div class="tab-pane" id="tab_3">Lorem Ipsum is simply
+									dummy text of the printing and typesetting industry. Lorem
+									Ipsum has been the industry's standard dummy text ever since
+									the 1500s, when an unknown printer took a galley of type and
+									scrambled it to make a type specimen book. It has survived not
+									only five centuries, but also the leap into electronic
+									typesetting, remaining essentially unchanged. It was
+									popularised in the 1960s with the release of Letraset sheets
+									containing Lorem Ipsum passages, and more recently with desktop
+									publishing software like Aldus PageMaker including versions of
+									Lorem Ipsum.</div>
+								<!-- /.tab-pane -->
+							</div>
+							<!-- /.tab-content -->
+						</div>
+					</div>
+					<!-- /.box-body -->
+
+
+					<div class="modal" id="modalAlert">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-hidden="true">×</button>
+									<h4 class="modal-title">DATA ENTRY</h4>
+								</div>
+								<div class="modal-body">
+									<div id="messageBox"></div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

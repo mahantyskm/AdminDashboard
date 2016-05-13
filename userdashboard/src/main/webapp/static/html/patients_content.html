@@ -1,0 +1,376 @@
+<div class="content-wrapper" style="background-color: #fff">
+	<section class="content-header">
+		<h1>Patients</h1>
+		<ol class="breadcrumb">
+			<li><a href="/batchentry.html"><i class="fa fa-dashboard"></i>
+					Home</a></li>
+			<li class="active">Patient Entry</li>
+		</ol>
+	</section>
+	<!-- Main content -->
+	<section class="content">
+		<div class="row">
+			<form role="form" id="addnewpatientform" class="form-horizontal"
+				method="post">
+				
+				<div class="col-md-6">
+					<div class="box box-primary">
+						<div class="box-header with-border">
+							<h3 class="box-title">Patient Details</h3>
+						</div>
+						<div class="box-body">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">First
+										Name </label>
+									<div class="col-sm-10">
+										<input class="form-control" name="firstName"
+											placeholder="Enter First Name" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Last
+										Name</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="lastName"
+											placeholder="Enter Last Name" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Gender
+									</label>
+									<div class="col-sm-10 input-group margin">
+										<input class="form-control" id="gender" name="gender"
+											placeholder="Select Gender" type="text">
+										<div class="input-group-btn">
+											<button aria-expanded="false" type="button"
+												class="btn btn-default dropdown-toggle col-sm-12"
+												data-toggle="dropdown">
+												Select <span class="fa fa-caret-down"></span>
+											</button>
+											<ul class="dropdown-menu">
+												<li><a href="javascript:setGender('Male')">Male</a></li>
+												<li><a href="javascript:setGender('Female')">Female</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Passport
+									</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="passport"
+											placeholder="Enter Passport number" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Social
+										Security </label>
+									<div class="col-sm-10">
+										<input class="form-control" name="socialSecurity"
+											placeholder="Enter Social Security Number" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Date
+										Of Birth </label>
+									<div class="col-sm-10">
+										<input class="form-control" name="dob" id="dob"
+											placeholder="Enter Date of Birth" type="text">
+										<script>
+														$(function() {
+															$("#dob")
+																	.datepicker();
+														});
+													</script>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Nationality
+									</label>
+									<div class="col-sm-10">
+										<input name="nationality" placeholder="Enter Nationality"
+											class="form-control" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Home
+										Phone</label>
+									<div class="col-sm-10">
+										<input name="homePhone" class="form-control"
+											placeholder="Enter Home Phone" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Office
+										Phone</label>
+									<div class="col-sm-10">
+										<input name="officePhone" class="form-control"
+											placeholder="Enter Office Phone" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Fax
+									</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="fax"
+											placeholder="Enter Fax Number" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Mobile
+									</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="mobile"
+											placeholder="Enter Mobile number" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Email
+									</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="email"
+											placeholder="Enter email ID" type="text">
+									</div>
+								</div>
+								<div class="box-footer">
+									<input type="button" class="btn btn-primary"
+										onclick="javascript:addNewPatient('#addnewpatientform')" value="Submit" />
+								</div>
+							</div>
+							<!-- /.box-body -->							
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="box box-primary">
+						<div class="box-header with-border">
+							<h3 class="box-title">Insurance Details</h3>
+						</div>
+						<div class="box-body">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Company
+										ID </label>
+									<div class="col-sm-10">
+										<input class="form-control" name="companyId"
+											placeholder="Enter Company ID" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Insurance
+										Number </label>
+									<div class="col-sm-10">
+										<input class="form-control" name="insuranceNumber"
+											placeholder="Enter patient Insurance Number" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Package
+										Name</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="packageName"
+											placeholder="Enter name of package" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Start
+										Date </label>
+									<div class="col-sm-10">
+										<input class="form-control" id="startDate" name="startDate"
+											placeholder="Choose start date" type="text">
+										<script>
+													$(function() {
+														$("#startDate")
+																.datepicker();
+													});
+												</script>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">End
+										Date </label>
+									<div class="col-sm-10">
+										<input class="form-control" id="endDate" name="endDate"
+											placeholder="Choose end date" type="text">
+										<script>
+													$(function() {
+														$("#endDate")
+																.datepicker();
+													});
+												</script>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Licence
+										Number</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="licenceNumber"
+											placeholder="Enter Licence Number" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Admission
+										Type</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="admissionType"
+											placeholder="Enter Admission type" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Policy
+										</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="policyNumber"
+											placeholder="Enter Policy Number" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Policy
+										Holder</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="policyHolderType"
+											placeholder="Enter Policy holder type" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Principal
+										Insurance</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="principalInsuranceNumber"
+											placeholder="Enter Principal Insurance Number" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Notes
+									</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="notes"
+											placeholder="Enter comments" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Card
+										coverage </label>
+									<div class="col-sm-10">
+										<input class="form-control" name="cardCoverage"
+											placeholder="Enter Card coverage details" type="text">
+									</div>
+								</div>
+							</div>
+
+							<div class="modal" id="modalAlert">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true">×</button>
+											<h4 class="modal-title">Add New Patient</h4>
+										</div>
+										<div class="modal-body">
+											<div id="messageBox"></div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">Close</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<script>
+											$(document)
+													.ready(
+															function() {
+																$.validator.addMethod('checkdateto',
+																		function(value, el, param) {
+																	
+																			var dtfrom = $("#startDate")
+																					.val();
+																			var dtto = $("#endDate")
+																			.val();
+																			
+																			var dateFrom = $.datepicker.parseDate('mm/dd/yy', dtfrom);
+																			var dateTo = $.datepicker.parseDate('mm/dd/yy', dtto);
+																			
+																			if (dateFrom < dateTo){
+																				return true;
+																			}else {
+																				return false;
+																			}
+																		}, "Please enter valid percentage.");
+																
+																$("#addnewpatientform")
+																.validate(
+																		{
+																			rules : {
+																				firstName : {
+																					required : true
+																				},
+																				lastName : {
+																					required : true
+																				},
+																				gender : {
+																					required : true
+																				},
+																				dob : {
+																					required : true
+																				},
+																				insuranceNumber : {
+																					required : true
+																				},
+																				admissionType : {
+																					required : true
+																				},
+																				cardCoverage : {
+																					required : true
+																				},
+																				startDate : {
+																					required : true
+																				},
+																				endDate:{
+																					required: true,
+																					checkdateto: true
+																				}
+																			},
+																			messages : {
+																				firstName : {
+																					required : "Please enter first name."
+																				},
+																				lastName : {
+																					required : "Please enter last name."
+																				},
+																				gender : {
+																					required : "Please select gender."
+																				},
+																				dob : {
+																					required : "Please choose date of birth."
+																				},
+																				insuranceNumber : {
+																					required : "Please enter insurance number."
+																				},
+																				admissionType : {
+																					required : "Please enter admission type."
+																				},
+																				cardCoverage : {
+																					required : "Please enter card coverage."
+																				},
+																				startDate : {
+																					required : "Please choose start date."
+																				},																					
+																				endDate:{
+																					required: "Please choose end date.",
+																					checkdateto: "End date should be less than start date."
+																				}
+																			}
+																		});	
+															});
+										</script>
+			</form>
+		</div>
+	</section>
+	<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

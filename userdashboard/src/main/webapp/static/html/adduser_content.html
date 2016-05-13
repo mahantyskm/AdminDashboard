@@ -1,0 +1,101 @@
+<div class="content-wrapper">
+
+	<!-- Main content -->
+	<section class="content">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<h3 class="box-title">Add User Account</h3>
+					</div>
+					<!-- form start -->
+					<form role="form" id="addnewuserform" class="form-horizontal"
+						method="post">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Username</label>
+								<div class="col-sm-10">
+									<input class="form-control" name="username"
+										placeholder="Enter Username" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">First
+									Name</label>
+								<div class="col-sm-10">
+									<input class="form-control" name="firstname"
+										placeholder="First Name" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Last
+									Name</label>
+								<div class="col-sm-10">
+									<input class="form-control" name="lastname"
+										placeholder="Last Name" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Middle
+									Name</label>
+								<div class="col-sm-10">
+									<input class="form-control" name="middlename"
+										placeholder="Middle Name" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Email
+								</label>
+								<div class="col-sm-10">
+									<input class="form-control" name="email"
+										placeholder="Enter email" type="password">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Password
+								</label>
+								<div class="col-sm-10">
+									<input class="form-control" name="password"
+										placeholder="Enter password" type="password">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Repeat
+									Password </label>
+								<div class="col-sm-10">
+									<input class="form-control" 
+										placeholder="Retype password" type="password">
+								</div>
+							</div>
+						</div>
+						<!-- /.box-body -->
+
+						<div class="box-footer">
+							<input type="button" class="btn btn-primary" onclick="javascript:addNewUser()" value="Submit" />
+						</div>
+					</form>
+					<div class="modal" id="modalAlert">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-hidden="true">×</button>
+									<h4 class="modal-title">Add New User</h4>
+								</div>
+								<div class="modal-body">
+									<div id="messageBox"></div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

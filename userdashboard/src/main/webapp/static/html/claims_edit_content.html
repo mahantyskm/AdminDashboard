@@ -1,0 +1,438 @@
+<div class="content-wrapper" style="background-color: #fff">
+	<section class="content-header">
+		<h1>Claims</h1>
+		<ol class="breadcrumb">
+			<li><a href="/batchentry.html"><i class="fa fa-dashboard"></i>
+					Home</a></li>
+			<li class="active">Claims</li>
+		</ol>
+	</section>
+	<!-- Main content -->
+	<section class="content">
+		<div class="row">
+			<form role="form" id="searchclaimform" class="form-horizontal"
+				method="post">
+				<input type="text" id="hiddenClaimId" name="claimId"
+					style="display: none" />
+				<div class="row">
+					<div class="col-md-11">
+						<div class="form-group">
+							<label for="exampleInputEmail1" class="col-sm-2 controol-label">
+							</label>
+							<div class="col-sm-8">
+								<input class="form-control" name="searchItem"
+									placeholder="Search by claim id or use * to see all claims"
+									type="text">
+							</div>
+							<input type="button" class="btn btn-primary"
+								onclick="javascript:searchClaim()" value="Search" />
+						</div>
+					</div>
+				</div>
+
+				<div id="claimsResultList" style="display: none" class="col-xs-12">
+					<div class="box">
+						<div class="box-header">
+							<h3 class="box-title">Patients</h3>
+						</div>
+						<!-- /.box-header -->
+						<div id="tableWrapper"
+							class="box-body table-responsive no-padding"></div>
+					</div>
+				</div>
+				<div id="encounter_box" style="display: none">
+					<div class="col-md-12">
+						<div class="box box-primary">
+							<div class="box-header with-border">
+								<h3 class="box-title">Encounter Details</h3>
+							</div>
+							<div class="box-body">
+								<div class="box-body">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label for="exampleInputEmail1"
+													class="col-sm-2 controol-label">Encounter Type </label>
+												<div class="col-sm-10">
+													<div class="col-sm-12 input-group">
+														<input class="form-control" id="encounterType"
+															name="encounterType" placeholder="Select encounter type"
+															value="No Bed + No Emergency Room" type="text">
+														<div class="input-group-btn">
+															<button aria-expanded="false" type="button"
+																class="btn btn-default dropdown-toggle col-sm-12"
+																data-toggle="dropdown">
+																Select <span class="fa fa-caret-down"></span>
+															</button>
+															<ul class="dropdown-menu">
+																<li><a
+																	href="javascript:setDropdown('No Bed + No Emergency Room','#encounterType')">No
+																		Bed + No Emergency Room</a></li>
+																<li><a
+																	href="javascript:setDropdown('No Bed + Emergency Room','#encounterType')">No
+																		Bed + Emergency Room</a></li>
+																<li><a
+																	href="javascript:setDropdown('Impatient Bed + No Emergency Room','#encounterType')">Impatient
+																		Bed + No Emergency Room</a></li>
+																<li><a
+																	href="javascript:setDropdown('Impatient Bed + Emergency Room','#encounterType')">Impatient
+																		Bed + Emergency Room</a></li>
+																<li><a
+																	href="javascript:setDropdown('Daycase Bed + No Emergency Room','#encounterType')">Daycase
+																		Bed + No Emergency Room</a></li>
+																<li><a
+																	href="javascript:setDropdown('Daycase Bed + Emergency Room','#encounterType')">Daycase
+																		Bed + Emergency Room</a></li>
+																<li><a
+																	href="javascript:setDropdown('Nationals Screening','#encounterType')">Nationals
+																		Screening</a></li>
+																<li><a
+																	href="javascript:setDropdown('New Visa Screening','#encounterType')">New
+																		Visa Screening</a></li>
+																<li><a
+																	href="javascript:setDropdown('Renewal Visa Screening','#encounterType')">Renewal
+																		Visa Screening</a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label for="exampleInputEmail1"
+													class="col-sm-2 controol-label">Clinician Name </label>
+												<div class="col-sm-10">
+													<input class="form-control" id="clinicianNameLicence"
+														name="clinicianNameLicence"
+														placeholder="Enter Clinician name / licence" type="text">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label for="exampleInputEmail1"
+													class="col-sm-2 controol-label">Start Type </label>
+												<div class="col-sm-10">
+													<div class="col-sm-12 input-group">
+														<input class="form-control" id="startType"
+															name="startType" placeholder="Select Start type"
+															value="Elective" type="text">
+														<div class="input-group-btn">
+															<button aria-expanded="false" type="button"
+																class="btn btn-default dropdown-toggle col-sm-12"
+																data-toggle="dropdown">
+																Select <span class="fa fa-caret-down"></span>
+															</button>
+															<ul class="dropdown-menu">
+																<li><a
+																	href="javascript:setDropdown('Elective','#startType')">Elective</a></li>
+																<li><a
+																	href="javascript:setDropdown('Emergency','#startType')">Emergency</a></li>
+																<li><a
+																	href="javascript:setDropdown('Transfer','#startType')">Transfer</a></li>
+																<li><a
+																	href="javascript:setDropdown('Live Birth','#startType')">Live
+																		Birth</a></li>
+																<li><a
+																	href="javascript:setDropdown('Still Birth','#startType')">Still
+																		Birth</a></li>
+																<li><a
+																	href="javascript:setDropdown('Dead On Arrival','#startType')">Dead
+																		On Arrival</a></li>
+																<li><a
+																	href="javascript:setDropdown('Continuing Encounter','#startType')">Continuing
+																		Encounter</a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label for="exampleInputEmail1"
+													class="col-sm-2 controol-label">Start Date </label>
+												<div class="col-sm-10">
+													<input class="form-control" id="startDate" name="startDate"
+														placeholder="Select start date" type="text">
+													<script>
+														$(function() {
+															$("#startDate")
+																	.datepicker();
+														});
+													</script>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label for="exampleInputEmail1"
+													class="col-sm-2 controol-label">End Type </label>
+												<div class="col-sm-10">
+													<div class="col-sm-12 input-group">
+														<input class="form-control" id="endType" name="endType"
+															value="Discharged with approval"
+															placeholder="Select end type" type="text">
+														<div class="input-group-btn">
+															<button aria-expanded="false" type="button"
+																class="btn btn-default dropdown-toggle col-sm-12"
+																data-toggle="dropdown">
+																Select <span class="fa fa-caret-down"></span>
+															</button>
+															<ul class="dropdown-menu">
+																<li><a
+																	href="javascript:setDropdown('Discharged with approval','#endType')">Discharged
+																		with approval</a></li>
+																<li><a
+																	href="javascript:setDropdown('Discharged against advice','#endType')">Discharged
+																		against advice</a></li>
+																<li><a
+																	href="javascript:setDropdown('Discharged absent without leave','#endType')">Discharged
+																		absent without leave</a></li>
+																<li><a
+																	href="javascript:setDropdown('Transfer to another facility','#endType')">Transfer
+																		to another facility</a></li>
+																<li><a
+																	href="javascript:setDropdown('Deceased','#endType')">Deceased</a></li>
+																<li><a
+																	href="javascript:setDropdown('Not discharged','#endType')">Not
+																		discharged</a></li>
+																<li><a
+																	href="javascript:setDropdown('Transfer to long-term care','#endType')">Transfer
+																		to long-term care</a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label for="exampleInputEmail1"
+													class="col-sm-2 controol-label">End Date </label>
+												<div class="col-sm-10">
+													<input class="form-control" id="endDate" name="endDate"
+														placeholder="Select end date" type="text">
+													<script>
+														$(function() {
+															$("#endDate")
+																	.datepicker();
+														});
+													</script>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label for="exampleInputEmail1"
+													class="col-sm-2 controol-label">Transfer Source </label>
+												<div class="col-sm-10">
+													<input class="form-control" id="transferSource"
+														name="transferSource" placeholder="Enter transfer source"
+														type="text">
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label for="exampleInputEmail1"
+													class="col-sm-2 controol-label">Transfer
+													Destination </label>
+												<div class="col-sm-10">
+													<input class="form-control" id="transferDestination"
+														name="transferDestination"
+														placeholder="Enter transfer destination" type="text">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label for="exampleInputEmail1"
+													class="col-sm-2 controol-label">Chief Complaints </label>
+												<div class="col-sm-10">
+													<input class="form-control" id="chiefComplaints"
+														name="chiefComplaints" placeholder="Enter complaints"
+														type="text">
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label for="exampleInputEmail1"
+													class="col-sm-2 controol-label">Main Symptoms </label>
+												<div class="col-sm-10">
+													<input class="form-control" id="mainSymptoms"
+														name="mainSymptoms" placeholder="Enter main symptoms"
+														type="text">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label for="exampleInputEmail1"
+													class="col-sm-2 controol-label">Past History </label>
+												<div class="col-sm-10">
+													<input class="form-control" id="pastHistory"
+														name="pastHistory" placeholder="Enter past history"
+														type="text">
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label for="exampleInputEmail1"
+													class="col-sm-2 controol-label">Physical Exam </label>
+												<div class="col-sm-10">
+													<input class="form-control" id="physicalExam"
+														name="physicalExam" placeholder="Enter First Name"
+														type="text">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label for="exampleInputEmail1"
+													class="col-sm-2 controol-label">Pre Auth Number </label>
+												<div class="col-sm-10">
+													<input class="form-control" id="preAuthNumber"
+														name="preAuthNumber"
+														placeholder="Enter pre authentication number" type="text">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="box-footer">
+										<input type="button" class="btn btn-primary"
+											onclick="javascript:addEncounterDetails()" value="Submit" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<script>
+					$(document)
+							.ready(
+									function() {
+										//$("#details_box").slideDown();
+										$.validator
+												.addMethod(
+														'checkdateto',
+														function(value, el,
+																param) {
+
+															var dtfrom = $(
+																	"#startDate")
+																	.val();
+															var dtto = $(
+																	"#endDate")
+																	.val();
+
+															var dateFrom = $.datepicker
+																	.parseDate(
+																			'mm/dd/yy',
+																			dtfrom);
+															var dateTo = $.datepicker
+																	.parseDate(
+																			'mm/dd/yy',
+																			dtto);
+
+															if (dateFrom < dateTo) {
+																return true;
+															} else {
+																return false;
+															}
+														},
+														"Please enter valid percentage.");
+										$.validator
+												.addMethod(
+														'starttype',
+														function(value, el,
+																param) {
+
+															var start = $(
+																	"#encounterType")
+																	.val();
+															var end = $(
+																	"#startType")
+																	.val();
+															if (start
+																	.indexOf("No Emergency") == -1) {
+																if (end == "Emergency") {
+																	return true;
+																} else {
+																	return false;
+																}
+															} else {
+																return true;
+															}
+														},
+														"Please enter valid percentage.");
+
+										$("#searchclaimform")
+												.validate(
+														{
+															rules : {
+																startDate : {
+																	required : true
+																},
+																endDate : {
+																	required : true,
+																	checkdateto : true
+																},
+																startType:{
+																	starttype: true
+																}
+															},
+															messages : {																
+																startDate : {
+																	required : "Please choose start date."
+																},
+																endDate : {
+																	required : "Please choose end date.",
+																	checkdateto : "End date should be less than start date."
+																},
+																startType:{
+																	starttype: "Start type can only be emegency."
+																}
+															}
+														});
+									});
+				</script>
+			</form>
+			<div class="modal" id="modalAlert">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">X</button>
+							<h4 class="modal-title">Edit Claims</h4>
+						</div>
+						<div class="modal-body">
+							<div id="messageBox"></div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

@@ -1,0 +1,167 @@
+<div class="content-wrapper" style="background-color: #fff">
+	<section class="content-header">
+		<h1>Additional Data</h1>
+		<ol class="breadcrumb">
+			<li><a href="/batchentry.html"><i class="fa fa-dashboard"></i>
+					Home</a></li>
+			<li class="active">Additional Data Entry</li>
+		</ol>
+	</section>
+	<!-- Main content -->
+	<section class="content">
+		<div class="row">
+			<form role="form" id="addAdditionalData"
+				enctype="multipart/form-data" class="form-horizontal" method="post">
+				<div class="col-md-12">
+					<div class="box box-primary">
+						<div class="box-header with-border">
+							<h3 class="box-title">Additional Details</h3>
+						</div>
+						<div class="box-body">
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">Record
+									Type Name </label>
+								<div class="radio">
+									<label> <input type="radio" name="selectionType"
+										id="hospital" value="hospital"
+										onclick="javascript:displayHospital()"> Hospital
+									</label> <label> <input type="radio" name="selectionType"
+										id="insuranceProvider" value="insurance"
+										onclick="javascript:displayInsurance()"> Insurance
+										Provider
+									</label> <label> <input type="radio" name="selectionType"
+										id="doctor" value="doctor"
+										onclick="javascript:displayDoctor()"> Doctor
+									</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1" class="col-sm-2 controol-label">
+									Type Name </label>
+								<div class="radio">
+									<label> <input type="radio" name="selection" id="entry"
+										value="option2" onclick="javascript:addEntry()"> Add
+										Entry
+									</label> <label> <input type="radio" name="selection" id="file"
+										value="option2" onclick="javascript:uploadFile()">
+										Upload File
+									</label>
+								</div>
+							</div>
+							<div id="hospitalDiv" style="display: none;">
+								<div id="hospitalEntry" class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">EClaim
+										ID</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="eClaimIDHospital"
+											placeholder="Enter eclaim id" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Hospital
+										Name</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="hospitalName"
+											placeholder="Enter hospital name" type="text">
+									</div>
+								</div>
+							</div>
+							<div id="insuranceDiv" style="display: none;">
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">EClaim
+										ID</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="eClaimIDInsurance"
+											placeholder="Enter eclaim id" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Insurance
+										Name</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="insuranceName"
+											placeholder="Enter hospital name" type="text">
+									</div>
+								</div>
+							</div>
+							<div id="doctorDiv" style="display: none;">
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">EClaim
+										ID</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="eClaimIDDoctor"
+											placeholder="Enter eclaim id" type="text">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Doctor's
+										Name</label>
+									<div class="col-sm-10">
+										<input class="form-control" name="doctorName"
+											placeholder="Enter hospital name" type="text">
+									</div>
+								</div>
+							</div>
+							<div id="fileUpload" style="display: none">
+								<div class="form-group">
+									<label for="exampleInputEmail1" class="col-sm-2 controol-label">Select
+										File</label> <input type="file" id="fileUpload" name="file"
+										value="Upload" />
+								</div>
+							</div>
+							<div class="box-footer">
+								<input type="submit" class="btn btn-primary" value="Submit" />
+							</div>
+						</div>
+					</div>
+					<div class="modal" id="modalAlert">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-hidden="true">X</button>
+									<h4 class="modal-title">Add Additional Details</h4>
+								</div>
+								<div class="modal-body">
+									<div id="messageBox"></div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<script>
+						$(document).ready(function() {
+
+							$("#addAdditionalData").submit(function(event) {
+								event.preventDefault();
+								var formData = new FormData($(this)[0]);
+								addExtraData(formData);
+								return false;
+							});
+
+							function addExtraData(formData) {
+								$.ajax({
+									url : '/addAdditionalData',
+									type : 'POST',
+									data : formData,
+									async : false,
+									cache : false,
+									contentType : false,
+									processData : false,
+									success : function(returndata) {
+										addAdditionalDataCallback(returndata);
+									}
+								});
+							}
+						});
+					</script>
+				</div>
+			</form>
+		</div>
+	</section>
+	<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
