@@ -8,13 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import com.indusmed.dao.DashboardServiceDaoImpl;
 import com.indusmed.dao.UserManagementDaoImpl;
 
-@ComponentScan("com.indusmed")
+
 @SpringBootApplication
 public class ApplicationBootLoader extends SpringBootServletInitializer {
 	
