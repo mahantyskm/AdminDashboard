@@ -17,6 +17,8 @@ import com.indusmed.response.LoginResponse;
 import com.indusmed.response.LogoutResponse;
 import com.indusmed.utils.HashUtil;
 
+import java.lang.annotation.Retention;
+
 @RestController
 public class UserManagementController {
 
@@ -24,10 +26,10 @@ public class UserManagementController {
     UserManagementDaoImpl userManagementDao;
 
     @Autowired
-    HashUtil              hashUtil;
+    HashUtil hashUtil;
 
     @Autowired
-    HttpSession           session;
+    HttpSession session;
 
     @RequestMapping("/addNewUser")
     public AddNewUserResponse addNewUser(AddNewUserRequest request) {
@@ -63,6 +65,11 @@ public class UserManagementController {
         }
 
         return response;
+    }
+
+    @RequestMapping("/hello")
+    public String hello() {
+        return "hello";
     }
 
     @RequestMapping("/getUserFromSession")

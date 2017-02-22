@@ -1,3 +1,4 @@
+
 package com.indusmed.dao;
 
 import java.io.ByteArrayInputStream;
@@ -75,10 +76,11 @@ public class DashboardServiceDaoImpl extends JdbcDaoSupport implements IDashboar
     @SuppressWarnings("deprecation")
     @Override
     public int addNewClaim(AddClaimRequest request) {
+
         int result = 0;
         int result2 = 0;
         try {
-            int id = getJdbcTemplate().queryForInt("select max(id) from " + Constants.CLAIM_TABLE);
+            int id = 1;//getJdbcTemplate().queryForInt("select max(id) from " + Constants.CLAIM_TABLE);
             System.out.println("Loaded Value : " + id);
             String claimId = Constants.CLAIM_PREFIX + (id + 1);
             String sql = "insert into "
@@ -103,7 +105,8 @@ public class DashboardServiceDaoImpl extends JdbcDaoSupport implements IDashboar
                             claimId,
                             request.getPatientId() });
 
-            /* if claim successfully added then update batch table also */
+        //if claim successfully added then update batch table also
+
             if (result == 1) {
                 String sql2 = "update " + Constants.BATCH_TABLE + " set actualClaimCount = actualClaimCount + 1 and claimTotalAmount = claimTotalAmount +  1 where batchNumber = '"
                         + request.getBatchNumber() + "'";
@@ -121,7 +124,8 @@ public class DashboardServiceDaoImpl extends JdbcDaoSupport implements IDashboar
 
         int result = 0;
         try {
-            int id = getJdbcTemplate().queryForInt("select max(id) from " + Constants.PATIENTS_TABLE);
+
+            int id = 1;//getJdbcTemplate().queryForObject("select max(id) from " + Constants.PATIENTS_TABLE);
             System.out.println("Loaded Value : " + id);
             String patientId = Constants.PATIENT_PREFIX + (id + 1);
 
